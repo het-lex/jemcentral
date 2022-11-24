@@ -1,13 +1,26 @@
 <header>
-  <ul class="list">
-    <li class="list-item">
-      home
-    </li>
-  </ul>
+  <nav class="navbar sticky-top navbar-light bg-light">
+    <div class="container">
+
+      <ul class="nav justify-content-center">
+        <li class="nav-item" *ngFor="let route of routes">
+          <a class="nav-link"
+             [routerLink]="['/', route]"
+             routerLinkActive="current">
+            {{route | titlecase}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
-<main>
-  <router-outlet></router-outlet>
+<main class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </main>
 
 <footer>
