@@ -1,0 +1,22 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &-item {
+    padding: 4px 8px;
+    border: 1px solid;
+    cursor: pointer;
+
+    &.selected {
+      background: var(--selected);
+    }
+
+    &:hover {
+      background: var(--hover);
+    }
+  }
+}
