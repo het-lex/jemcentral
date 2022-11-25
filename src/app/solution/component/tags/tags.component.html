@@ -1,0 +1,15 @@
+<!--<div class="tags" *ngIf="tags">-->
+<!--  <div class="tag" *ngFor="let tag of tags">-->
+<!--    {{tag}}-->
+<!--  </div>-->
+<!--</div>-->
+
+<ng-select [items]="tasks.tags.list"
+           [addTag]="true"
+           [hideSelected]="false"
+           [multiple]="true"
+           bindLabel="name"
+           (add)="tasks.tags.update([$event])"
+           [closeOnSelect]="true"
+           [(ngModel)]="tags">
+</ng-select>

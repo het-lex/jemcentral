@@ -21,13 +21,13 @@ export class TasksService {
       .pipe(
         first(),
         map(response => response as ITask[]),
-        map(tasks => tasks.map(task => new Task(task.id, task.title, task.text, task.tags)))
+        map(tasks => tasks.map(task => new Task(task.id, task.title, task.text, task.tags))),
+        tap(tasks => tasks.forEach(task => this.tags.update(task.tags)))
       )
       .subscribe((tasks: Task[]) => this.list.next(tasks))
   }
 
   select(task: Task | null) {
-    console.log(task)
     this.selected.next(task)
   }
 

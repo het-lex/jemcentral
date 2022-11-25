@@ -16,13 +16,17 @@ export class List<T> {
     if (index !== -1) {
       this.deselect(index)
     } else {
-      this.selected.push(item)
+      this.selected = [...this.selected, item]
     }
     console.log(this.selected)
   }
 
   deselect(index: number) {
-    this.selected.splice(index, 1)
+    this.selected = [...this.selected.filter((_, i) => i !== index)]
+  }
+
+  deselectAll() {
+    this.selected = []
   }
 }
 

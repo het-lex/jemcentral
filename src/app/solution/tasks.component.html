@@ -1,27 +1,40 @@
-<h1>Issues</h1>
+<div class="container">
+  <h1>Tasks</h1>
 
-<div class="tasks">
-  <ul class="list" *ngIf="tasks.list | async as list">
-    <li class="list-item" *ngFor="let task of list" (click)="tasks.select(task)">
-      <div class="list-item__title">
+  <div class="tags">
+  <span *ngFor="let tag of tasks.tags.list"
+        class="tag"
+        [class.selected]="tasks.tags.selected.includes(tag)"
+        (click)="tasks.tags.select(tag)">{{tag}}</span>
+    <span class="tag selected" *ngIf="tasks.tags.selected.length" (click)="tasks.tags.deselectAll()">
+      <b>✕</b>
+    </span>
+  </div>
+  <div class="tasks">
+    <ul class="list" *ngIf="tasks.list | async as list">
+      <li class="list-item" *ngFor="let task of list | filterByTag:tasks.tags.selected" (click)="tasks.select(task)">
+        <div class="list-item__title">
         <span>
         <span class="id inline-center">#{{task.id}}</span>
         <strong>{{task.title}}</strong>
         </span>
-        <div class="list-item__controls">
-          <tt-controls>
-            <button class="delete" (click)="tasks.delete(task)">Delete</button>
-            <button class="edit" (click)="tasks.edit(task)">Edit</button>
-          </tt-controls>
+          <div class="list-item__controls">
+            <tt-controls>
+              <button class="delete" (click)="tasks.delete(task)">Delete</button>
+              <button class="edit" (click)="tasks.edit(task)">Edit</button>
+            </tt-controls>
+          </div>
         </div>
-      </div>
-      <div class="list-item__tags tags">
-        <span *ngFor="let tag of task.tags" class="tag">{{tag}}</span>
-      </div>
-    </li>
-    <li class="list-item create">
-      <h4>+ Create issue</h4>
-    </li>
-  </ul>
-  <tt-task [task]="tasks.selected | async" (deselect)="tasks.deselect()"></tt-task>
+        <div class="list-item__tags" *ngIf="task.tags as tags">
+        <span *ngFor="let tag of tags" class="tag"
+              [class.selected]="tasks.tags.selected.includes(tag)"
+              (click)="tasks.tags.select(tag)">{{tag}}</span>
+        </div>
+      </li>
+      <li class="list-item create">
+        <h4>+ Create issue</h4>
+      </li>
+    </ul>
+    <tt-task [task]="tasks.selected | async" (deselect)="tasks.deselect()"></tt-task>
+  </div>
 </div>
