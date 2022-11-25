@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: mainRoutes.SOLUTION,
-    loadChildren: () => import('./solution/solution.module').then(m => m.SolutionModule)
+    loadChildren: () => import('./solution/tasks.module').then(m => m.TasksModule)
   }
 ]
 

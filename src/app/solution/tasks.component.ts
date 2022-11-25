@@ -3,14 +3,19 @@ import { TasksService } from './service/tasks.service'
 
 @Component({
   selector: 'tt-solution',
-  templateUrl: './solution.component.html',
-  styleUrls: ['./solution.component.scss']
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.scss']
 })
-export class SolutionComponent implements OnInit {
+export class TasksComponent implements OnInit {
 
   constructor(public tasks: TasksService) { }
 
   ngOnInit(): void {
+    this.tasks.getTasks()
+  }
+
+  createTask() {
+
   }
 
 }

@@ -1,0 +1,10 @@
+<h1>Issues</h1>
+
+<ul class="list" *ngIf="tasks.list | async as list">
+  <li class="list-item" *ngFor="let task of list">
+    <div class="title">
+      {{task.title}}
+    </div>
+    .
+  </li>
+</ul>

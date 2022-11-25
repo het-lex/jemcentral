@@ -1,14 +1,20 @@
 .list {
-  margin: 0;
-  padding: 0;
+  margin: 16px;
+  padding: 16px 8px;
   list-style: none;
+
+  box-sizing: border-box;
   display: inline-flex;
   flex-wrap: wrap;
   gap: 8px;
 
+  border-radius: 4px;
+  overflow: hidden;
+
   &-item {
+    width: 100%;
     padding: 4px 8px;
-    border: 1px solid;
+    border: 1px solid var(--border);
     cursor: pointer;
 
     &.selected {
