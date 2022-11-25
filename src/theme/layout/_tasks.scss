@@ -1,0 +1,29 @@
+.tasks {
+  display: inline-flex;
+  padding: 0 8px;
+}
+
+.task {
+  width: 42vw;
+
+  &-title {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+
+    line-height: var(--control);
+  }
+  &-text {}
+}
+
+.tags {
+  margin-left: 42px;
+  display: inline-flex;
+  gap: 12px;
+  .tag {
+    border: 1px solid var(--border);
+    background: var(--light-gray);
+    border-radius: 12px;
+    padding: 2px 8px;
+  }
+}

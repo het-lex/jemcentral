@@ -1,0 +1,19 @@
+<div class="task" *ngIf="task">
+  <div class="task-title">
+    <h3>
+      {{task.title}}
+    </h3>
+    <span class="close flex-center" (click)="deselect.emit(task)">
+      ✕
+    </span>
+  </div>
+  <h4>
+    Description
+  </h4>
+  <div class="task-text">
+    {{task.text}}
+  </div>
+  <div class="comments">
+    <tt-comments></tt-comments>
+  </div>
+</div>

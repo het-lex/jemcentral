@@ -9,6 +9,8 @@ import { ITask, Tag, Task } from '../models/tasks.model'
 })
 export class TasksService {
   list: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([])
+  selected: BehaviorSubject<Task | null> = new BehaviorSubject<Task | null>(null)
+
   tags: List<Tag> = new List<Tag>()
 
   constructor(private http: HttpClient) {
@@ -22,6 +24,23 @@ export class TasksService {
         map(tasks => tasks.map(task => new Task(task.id, task.title, task.text, task.tags)))
       )
       .subscribe((tasks: Task[]) => this.list.next(tasks))
+  }
+
+  select(task: Task | null) {
+    console.log(task)
+    this.selected.next(task)
+  }
+
+  deselect() {
+    this.select(null)
+  }
+
+  delete(task: Task) {
+    console.log('delete', task)
+  }
+
+  edit(task: Task) {
+    console.log('edit', task)
   }
 
   createTask(task: ITask) {
