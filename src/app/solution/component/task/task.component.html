@@ -1,22 +1,46 @@
 <div class="task" *ngIf="task">
-  <div class="task-title">
-    <h3>
-      {{task.title}}
-    </h3>
-    <span class="close flex-center" (click)="deselect.emit(task)">
+  <div class="readonly" *ngIf="!onEdit; else editable">
+    <div class="task-title">
+      <h3>
+        {{task.title}}
+      </h3>
+      <span class="close flex-center" (click)="tasks.deselect()">
       ✕
     </span>
+    </div>
+    <div class="task-tags">
+      <tt-tags [tags]="task.tags"></tt-tags>
+    </div>
+    <h4>
+      Description
+    </h4>
+    <div class="task-text">
+      {{task.text}}
+    </div>
+
+
+    <div class="comments">
+      <tt-comments></tt-comments>
+    </div>
   </div>
-  <div class="task-tags">
-    <tt-tags [tags]="task.tags"></tt-tags>
-  </div>
-  <h4>
-    Description
-  </h4>
-  <div class="task-text">
-    {{task.text}}
-  </div>
-  <div class="comments">
-    <tt-comments></tt-comments>
-  </div>
+
+
+  <ng-template #editable>
+    <div class="edit-mode" *ngIf="onEdit">
+      <div class="inline-flex">
+        <input type="text" class="title" [(ngModel)]="onEdit.title">
+      </div>
+      <div class="gap"></div>
+      <div class="task-tags">
+        <tt-tags [tags]="task.tags"></tt-tags>
+      </div>
+      <textarea [(ngModel)]="onEdit.text" rows="8"></textarea>
+    </div>
+    <div class="controls">
+      <div class="content">
+        <button class="delete" (click)="tasks.cancel()">Cancel</button>
+        <button class="edit" (click)="tasks.save(onEdit)">Save</button>
+      </div>
+    </div>
+  </ng-template>
 </div>

@@ -32,17 +32,30 @@
   display: inline-flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+
+  position: relative;
+
 }
 
 .tag {
-  border: 1px solid var(--border);
+  border: 1px solid var(--tag);
   background: var(--tag);
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 2px 8px;
   cursor: pointer;
   user-select: none;
+
+  font-size: 0.75em;
   &:hover, &.selected {
-    border-color: var(--tag);
     background: var(--white);
   }
+}
+
+.readonly {
+  width: 100%;
+}
+
+
+.create-mode {
+  padding: 16px;
 }

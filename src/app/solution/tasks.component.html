@@ -15,8 +15,8 @@
       <li class="list-item" *ngFor="let task of list | filterByTag:tasks.tags.selected" (click)="tasks.select(task)">
         <div class="list-item__title">
         <span>
-        <span class="id inline-center">#{{task.id}}</span>
-        <strong>{{task.title}}</strong>
+          <span class="id inline-center">#{{task.id}}</span>
+          <strong>{{task.title}}</strong>
         </span>
           <div class="list-item__controls">
             <tt-controls>
@@ -32,9 +32,11 @@
         </div>
       </li>
       <li class="list-item create">
-        <h4>+ Create issue</h4>
+        <h4  *ngIf="!tasks.createMode" (click)="tasks.createMode = true">+ Create issue</h4>
+        <tt-create *ngIf="tasks.createMode" (closed)="tasks.createMode = false"></tt-create>
       </li>
     </ul>
-    <tt-task [task]="tasks.selected | async" (deselect)="tasks.deselect()"></tt-task>
+    <tt-task [task]="tasks.selected | async"
+             [onEdit]="tasks.onEdit | async"></tt-task>
   </div>
 </div>

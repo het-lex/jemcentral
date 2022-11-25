@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Task } from '../../models/tasks.model'
+import { TasksService } from '../../service/tasks.service'
 
 @Component({
   selector: 'tt-task',
@@ -8,8 +9,11 @@ import { Task } from '../../models/tasks.model'
 })
 export class TaskComponent {
   @Input() task: Task | null = null
-  @Output() deselect: EventEmitter<Task | null> = new EventEmitter<Task | null>()
+  @Input() onEdit: Task | null = null
+  editType: boolean = false
 
-  constructor() {
+  addTag: boolean = false
+
+  constructor(public tasks: TasksService) {
   }
 }

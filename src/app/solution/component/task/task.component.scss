@@ -1,0 +1,23 @@
+.edit-mode, .create-mode {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  input, textarea {
+    box-sizing: border-box;
+    border-color: transparent;
+    border-radius: 4px;
+  }
+
+  input {
+    &.title {
+      width: 100%;
+      font-size: 1.17em;
+    }
+  }
+
+  textarea {
+    max-width: 39vw;
+  }
+}

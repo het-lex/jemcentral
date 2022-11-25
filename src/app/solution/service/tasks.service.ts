@@ -9,7 +9,11 @@ import { ITask, Tag, Task } from '../models/tasks.model'
 })
 export class TasksService {
   list: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([])
+
   selected: BehaviorSubject<Task | null> = new BehaviorSubject<Task | null>(null)
+  onEdit: BehaviorSubject<Task | null> = new BehaviorSubject<Task | null>(null)
+
+  createMode: boolean = false
 
   tags: List<Tag> = new List<Tag>()
 
@@ -40,7 +44,28 @@ export class TasksService {
   }
 
   edit(task: Task) {
-    console.log('edit', task)
+    this.onEdit.next(task.clone())
+  }
+
+  save(edited: Task | null) {
+    if (edited) {
+      this.list.next(this.list.value.map(task => edited.id === task.id ? edited : task))
+      this.onEdit.next(null)
+      this.deselect()
+    }
+  }
+
+  create(created: Task) {
+    if (created) {
+      this.list.next([...this.list.value, created])
+      this.onEdit.next(null)
+      this.deselect()
+    }
+  }
+
+  cancel() {
+    this.onEdit.next(null)
+    this.deselect()
   }
 
   createTask(task: ITask) {

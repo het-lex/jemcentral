@@ -1,0 +1,15 @@
+<div class="create-mode" *ngIf="task">
+  <div class="inline-flex">
+    <input type="text" class="title" [(ngModel)]="task.title">
+  </div>
+  <div class="gap"></div>
+  <div class="task-tags">
+    <tt-tags [tags]="task.tags" [editMode]="true" [autoSave]="true"></tt-tags>
+  </div>
+  <div class="controls">
+    <div class="content">
+      <button class="delete" (click)="closed.emit(task)">Cancel</button>
+      <button class="edit" (click)="tasks.create(task); closed.emit(task)">Create</button>
+    </div>
+  </div>
+</div>

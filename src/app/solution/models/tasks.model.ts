@@ -1,5 +1,6 @@
 export type Tag = string
 
+
 export class Task {
   public tags: Tag[] = []
 
@@ -8,6 +9,11 @@ export class Task {
               public text: string,
               tags: Tag[] = []) {
     this.tags = tags
+  }
+
+  clone() {
+    const {id, title, text, tags} = this
+    return new Task(id, title, text, tags)
   }
 }
 
