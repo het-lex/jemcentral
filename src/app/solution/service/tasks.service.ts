@@ -65,6 +65,10 @@ export class TasksService {
       this.onEdit.next(null)
       // this.deselect()
     }
+    if (this.createMode && edited) {
+      this.createMode = OFF
+      this.list.next([...this.list.value, edited])
+    }
   }
 
   create() {
@@ -72,7 +76,6 @@ export class TasksService {
     this.select(empty)
     this.onEdit.next(empty)
     this.createMode = ON
-    this.list.next([...this.list.value, empty])
   }
 
   cancel() {

@@ -2,11 +2,15 @@
   <h1>Tasks</h1>
 
   <div class="tags">
-  <span *ngFor="let tag of tasks.tags.list"
-        class="tag"
-        [class.selected]="tasks.tags.selected.includes(tag)"
-        (click)="tasks.tags.select(tag)">{{tag}}</span>
-    <span class="tag selected" *ngIf="tasks.tags.selected.length" (click)="tasks.tags.deselectAll()">
+    <span *ngFor="let tag of tasks.tags.list"
+          class="tag"
+          [class.selected]="tasks.tags.selected.includes(tag)"
+          (click)="tasks.tags.select(tag)">
+      {{tag}}
+    </span>
+    <span class="tag selected"
+          *ngIf="tasks.tags.selected.length"
+          (click)="tasks.tags.deselectAll()">
       <b>✕</b>
     </span>
   </div>

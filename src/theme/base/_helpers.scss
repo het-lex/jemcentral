@@ -3,20 +3,28 @@
   justify-content: center;
   align-items: center;
 }
+
 .inline-center {
   display: inline-flex;
   justify-content: center;
   align-items: center;
 }
+
 .inline-flex {
   display: inline-flex;
   width: 100%;
 }
+
 .container {
   max-width: 1140px;
   margin: auto;
   padding: 0 16px;
+
+  h1, h2 {
+    margin: 16px 0;
+  }
 }
+
 .gap {
   display: block;
   height: 16px;

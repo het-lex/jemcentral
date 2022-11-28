@@ -6,7 +6,7 @@
              appendTo="body"
              bindLabel="name"
              (add)="added($event)"
-             (change)="changed()"
+             (change)="changed($event)"
              [closeOnSelect]="true"
              placeholder="Select or Add Tag"
              [(ngModel)]="tags">

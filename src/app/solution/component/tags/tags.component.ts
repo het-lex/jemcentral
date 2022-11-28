@@ -28,8 +28,9 @@ export class TagsComponent implements OnInit {
     this.tasks.tags.update([tag])
   }
 
-  changed() {
+  changed(tags: Tag[]) {
     this.changes = true
+    this.tags = tags
     if (this.autoSave) {
       this.save()
     }

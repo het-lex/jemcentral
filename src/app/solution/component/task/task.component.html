@@ -9,15 +9,16 @@
     </span>
     </div>
     <div class="task-tags">
-      <tt-tags [tags]="task.tags"></tt-tags>
+      <tt-tags [tags]="task.tags" [autoSave]="tasks.createMode"></tt-tags>
     </div>
-    <h4>
-      Description
-    </h4>
-    <div class="task-text">
-      {{task.text}}
+    <div class="description" *ngIf="task.text">
+      <h4>
+        Description
+      </h4>
+      <div class="task-text">
+<!--        {{task.text | safe:'html'}}-->
+      </div>
     </div>
-
 
     <div class="comments">
 <!--      <tt-comments></tt-comments>-->
@@ -35,10 +36,17 @@
       </div>
       <textarea [(ngModel)]="onEdit.text" rows="8"></textarea>
     </div>
-    <div class="controls">
+    <div class="controls" *ngIf="onEdit">
       <div class="content">
-        <button class="delete" (click)="tasks.cancel()">Cancel</button>
-        <button class="edit" (click)="tasks.save(onEdit)">Save</button>
+        <button class="delete"
+                (click)="tasks.cancel()">
+          Cancel
+        </button>
+        <button class="edit"
+                [disabled]="!onEdit.title.length"
+                (click)="tasks.save(onEdit)">
+          {{tasks.createMode ? 'Create' : 'Save'}}
+        </button>
       </div>
     </div>
   </ng-template>

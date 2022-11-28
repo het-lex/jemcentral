@@ -38,39 +38,6 @@
   }
 }
 
-.tags {
-  margin-bottom: 16px;
-  gap: 8px;
-  display: inline-flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-
-  position: relative;
-  .buttons {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    height: 24px;
-  }
-}
-
-.tag {
-  border: 1px solid var(--tag);
-  background: var(--tag);
-  border-radius: 4px;
-  padding: 2px 8px;
-  cursor: pointer;
-  user-select: none;
-
-  font-size: 0.75em;
-
-  transition: var(--trans-all);
-  &:hover, &.selected {
-    background: var(--white);
-    border-color: var(--warning);
-  }
-}
-
 .readonly {
   width: 100%;
 }
