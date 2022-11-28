@@ -1,0 +1,21 @@
+<div class="tags" *ngIf="tasks.tags.list.length">
+  <ng-select [items]="tasks.tags.list"
+             [addTag]="true"
+             [hideSelected]="false"
+             [multiple]="true"
+             appendTo="body"
+             bindLabel="name"
+             (add)="added($event)"
+             (change)="changed($event)"
+             [closeOnSelect]="true"
+             placeholder="Select or Add Tag"
+             [(ngModel)]="tags">
+  </ng-select>
+
+  <ng-container *ngIf="changes">
+    <div class="buttons">
+        <button class="save" (click)="save()">✓</button>
+        <button class="cancel" (click)="cancel()">✕</button>
+    </div>
+  </ng-container>
+</div>

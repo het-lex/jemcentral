@@ -1,0 +1,51 @@
+<div class="task" *ngIf="task">
+  <div class="full-width" *ngIf="!onEdit; else editable">
+    <div class="task-title">
+      <h3>
+        {{task.title}}
+      </h3>
+      <span class="close flex-center" (click)="tasks.deselect()">
+      ✕
+    </span>
+    </div>
+    <div class="task-tags">
+      <tt-tags [tags]="task.tags" [autoSave]="tasks.createMode"></tt-tags>
+    </div>
+    <div class="description" *ngIf="task.text">
+      <h4>
+        Description
+      </h4>
+      <div class="task-text" [innerHTML]="task.text | safe:'html'"></div>
+    </div>
+
+    <div class="comments">
+<!--      <tt-comments></tt-comments>-->
+    </div>
+  </div>
+
+  <ng-template #editable>
+    <div class="edit-mode" *ngIf="onEdit">
+      <div class="inline-flex">
+        <input type="text" class="title" [(ngModel)]="onEdit.title">
+      </div>
+      <div class="gap"></div>
+      <div class="task-tags">
+        <tt-tags [tags]="onEdit.tags"></tt-tags>
+      </div>
+      <textarea [(ngModel)]="onEdit.text" rows="8"></textarea>
+    </div>
+    <div class="controls" *ngIf="onEdit">
+      <div class="content">
+        <button class="delete"
+                (click)="tasks.cancel()">
+          Cancel
+        </button>
+        <button class="edit"
+                [disabled]="!onEdit.title.length"
+                (click)="tasks.save(onEdit)">
+          {{tasks.createMode ? 'Create' : 'Save'}}
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,24 @@
+:root {
+  --color: #121212;
+  --background: #FAFAFA;
+  --white: #FFFFFF;
+  --gray: #CACACA;
+  --tag: #ebf5ff;
+  --hover: #FAFBFC;
+  --hover-create: #E2E4E9;
+  --list: #F4F5F7;
+  --border: #EBECF0;
+
+  --selected: #DEEBFF;
+  --danger: #FF5630;
+  --warning: #FFAB00;
+
+  // sizes
+  --control: 32px;
+
+  // shadow
+  --shadow: 0 4px 8px rgba(102, 102, 102, 0.21);
+
+  // transition
+  --trans-all: all 0.2s ease-out;
+}

@@ -1,0 +1,153 @@
+.list, .task {
+  margin: 16px 0;
+  padding: 16px;
+  list-style: none;
+  box-sizing: border-box;
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  border-radius: 8px;
+  background: var(--list);
+
+  max-height: 75vh;
+  overflow: auto;
+
+  &-item {
+    width: 100%;
+    padding: 8px;
+    background: var(--white);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--trans-all);
+
+    border-radius: 4px;
+
+    &.selected {
+      background: var(--selected);
+    }
+
+    &:hover {
+      background: var(--hover);
+    }
+
+    .id {
+      min-width: 42px;
+    }
+
+    &__title {
+      width: 100%;
+      line-height: var(--control);
+      display: inline-flex;
+      justify-content: space-between;
+    }
+
+    &__tags {
+      margin-left: 42px;
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    &__type {
+      width: 42px;
+    }
+  }
+}
+
+.type {
+  font-size: 0.5em;
+}
+
+.controls {
+  width: var(--control);
+  height: var(--control);
+
+  gap: 3px;
+  border-radius: 4px;
+
+  position: relative;
+
+  .dot {
+    width: 3px;
+    height: 3px;
+    background: #42526E;
+    border-radius: 50%;
+  }
+
+  .content {
+    height: 100%;
+    display: inline-flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  &:hover {
+    background: #DEE1E7;
+
+    .hidden {
+      display: inline-flex;
+    }
+  }
+}
+
+.buttons {
+  display: inline-flex;
+}
+
+button {
+  height: inherit;
+  padding: 0 16px;
+  background: var(--white);
+  border-width: 1px;
+  border-color: var(--control);
+  font-size: 12px;
+  border-radius: 4px;
+
+  &.edit {
+    color: var(--warning);
+    border-color: var(--warning);
+  }
+
+  &.delete {
+    color: var(--danger);
+    border-color: var(--danger);
+  }
+
+  &:disabled {
+    cursor: default;
+    color: var(--gray);
+    border-color: var(--gray);
+  }
+
+  &:hover {
+    background: var(--hover);
+  }
+}
+
+.create, .close {
+  background: var(--list);
+  min-height: 32px;
+
+  h4 {
+    line-height: 32px;
+  }
+
+  padding: 0 8px;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  user-select: none;
+}
