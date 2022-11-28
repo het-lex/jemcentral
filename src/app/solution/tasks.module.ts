@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms'
 import { NgSelectModule } from '@ng-select/ng-select'
 import { CommentsComponent } from './component/comments/comments.component'
 import { ControlsComponent } from './component/controls/controls.component'
-import { CreateComponent } from './component/create/create.component'
 import { TagsComponent } from './component/tags/tags.component'
 import { TaskComponent } from './component/task/task.component'
 import { FilterByTagPipe } from './pipe/filter-by-tag.pipe'
@@ -21,8 +20,7 @@ import { TasksComponent } from './tasks.component'
     TaskComponent,
     CommentsComponent,
     TagsComponent,
-    FilterByTagPipe,
-    CreateComponent
+    FilterByTagPipe
   ],
   imports: [
     CommonModule,

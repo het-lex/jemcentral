@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Tag } from '../../models/tasks.model'
+import { OFF, ON, OnOff } from '../../model/on-off.type'
+import { Tag } from '../../model/tasks.model'
 import { TasksService } from '../../service/tasks.service'
 
 @Component({
@@ -9,8 +10,7 @@ import { TasksService } from '../../service/tasks.service'
 })
 export class TagsComponent implements OnInit {
   @Input() tags: Tag[] = []
-  @Input() editMode: boolean = false
-  @Input() autoSave: boolean = false
+  @Input() autoSave: OnOff = OFF
   changes: boolean = false
 
   constructor(public tasks: TasksService) {
@@ -28,8 +28,7 @@ export class TagsComponent implements OnInit {
     this.tasks.tags.update([tag])
   }
 
-  changed(changed: Tag[]) {
-    console.log(changed)
+  changed() {
     this.changes = true
     if (this.autoSave) {
       this.save()
@@ -43,7 +42,6 @@ export class TagsComponent implements OnInit {
       this.task.next(value)
       this.tasks.tags.update(value.tags)
       this.changes = false
-      this.editMode = !value.tags.length
     }
   }
 
@@ -52,7 +50,6 @@ export class TagsComponent implements OnInit {
     if (value) {
       this.tags = value.tags
       this.changes = false
-      this.editMode = false
     }
   }
 }

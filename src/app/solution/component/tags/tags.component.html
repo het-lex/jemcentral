@@ -1,17 +1,12 @@
-<div class="tags" *ngIf="!editMode" (click)="editMode = true">
-  <div class="tag" *ngFor="let tag of tags">
-    {{tag}}
-  </div>
-</div>
-
-<div class="tags" *ngIf="!tasks.tags.list.length || editMode">
+<div class="tags" *ngIf="tasks.tags.list.length">
   <ng-select [items]="tasks.tags.list"
              [addTag]="true"
              [hideSelected]="false"
              [multiple]="true"
+             appendTo="body"
              bindLabel="name"
              (add)="added($event)"
-             (change)="changed($event)"
+             (change)="changed()"
              [closeOnSelect]="true"
              placeholder="Select or Add Tag"
              [(ngModel)]="tags">

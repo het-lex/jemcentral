@@ -6,21 +6,5 @@ html, body {
 body {
   background: var(--background);
   color: var(--color);
-}
-
-footer {
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  color: var(--tag);
-
-  a {
-    color: var(--hover);
-  }
+  overflow-y: scroll;
 }

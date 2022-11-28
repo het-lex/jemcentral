@@ -1,20 +1,3 @@
-<header>
-  <nav class="navbar sticky-top navbar-light bg-light">
-    <div class="container">
-
-      <ul class="nav justify-content-center">
-        <li class="nav-item" *ngFor="let route of routes">
-          <a class="nav-link"
-             [routerLink]="['/', route]"
-             routerLinkActive="current">
-            {{route | titlecase}}
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
-
 <main class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -22,9 +5,3 @@
     </div>
   </div>
 </main>
-
-<footer>
-  <div class="copyright">
-    Developed by <a href="https://www.linkedin.com/in/het-lex/" target="_blank">Lex Hetmanenko</a> special for JemCentral
-  </div>
-</footer>

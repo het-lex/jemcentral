@@ -7,7 +7,6 @@ import { TasksService } from './service/tasks.service'
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-
   constructor(public tasks: TasksService) {
   }
 

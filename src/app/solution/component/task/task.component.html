@@ -20,10 +20,9 @@
 
 
     <div class="comments">
-      <tt-comments></tt-comments>
+<!--      <tt-comments></tt-comments>-->
     </div>
   </div>
-
 
   <ng-template #editable>
     <div class="edit-mode" *ngIf="onEdit">
@@ -32,7 +31,7 @@
       </div>
       <div class="gap"></div>
       <div class="task-tags">
-        <tt-tags [tags]="task.tags"></tt-tags>
+        <tt-tags [tags]="onEdit.tags"></tt-tags>
       </div>
       <textarea [(ngModel)]="onEdit.text" rows="8"></textarea>
     </div>

@@ -1,10 +1,21 @@
 .tasks {
+  width: 100%;
   display: inline-flex;
   gap: 16px;
+  & > .list, & > tt-task {
+    width: 50%;
+  }
+
+  &-list {
+    margin: 16px 0;
+    width: 50%;
+  }
 }
 
 .task {
-  width: 42vw;
+  width: 100%;
+  box-shadow: var(--shadow);
+  transition: var(--trans-all);
 
   &-title {
     width: 100%;
@@ -28,13 +39,19 @@
 }
 
 .tags {
+  margin-bottom: 16px;
   gap: 8px;
   display: inline-flex;
   justify-content: flex-start;
   flex-wrap: wrap;
 
   position: relative;
-
+  .buttons {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 24px;
+  }
 }
 
 .tag {
@@ -46,8 +63,11 @@
   user-select: none;
 
   font-size: 0.75em;
+
+  transition: var(--trans-all);
   &:hover, &.selected {
     background: var(--white);
+    border-color: var(--warning);
   }
 }
 
