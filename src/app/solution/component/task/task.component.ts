@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core'
-import { Task } from '../../model/tasks.model'
-import { TasksService } from '../../service/tasks.service'
+import { Task } from '@model/tasks.model'
+import { TasksService } from '@service/tasks.service'
 
 @Component({
   selector: 'tt-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+  templateUrl: './task.component.html'
 })
 export class TaskComponent {
   @Input() task: Task | null = null

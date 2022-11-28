@@ -1,22 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { OFF, ON, OnOff } from '../../model/on-off.type'
-import { Tag } from '../../model/tasks.model'
-import { TasksService } from '../../service/tasks.service'
+import { OFF, OnOff } from '@model/on-off.type'
+import { Tag } from '@model/tasks.model'
+import { TasksService } from '@service/tasks.service'
 
 @Component({
   selector: 'tt-tags',
-  templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.scss']
+  templateUrl: './tags.component.html'
 })
-export class TagsComponent implements OnInit {
+export class TagsComponent {
   @Input() tags: Tag[] = []
   @Input() autoSave: OnOff = OFF
   changes: boolean = false
 
   constructor(public tasks: TasksService) {
-  }
-
-  ngOnInit(): void {
   }
 
   get task() {

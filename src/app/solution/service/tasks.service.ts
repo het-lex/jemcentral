@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, first, map, tap } from 'rxjs'
-import { List } from '../model/list.model'
-import { OFF, ON, OnOff } from '../model/on-off.type'
-import { ITask, Tag, Task } from '../model/tasks.model'
+import { List } from '@model/list.model'
+import { OFF, ON, OnOff } from '@model/on-off.type'
+import { ITask, Tag, Task } from '@model/tasks.model'
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,8 @@ export class TasksService {
       .subscribe((tasks: Task[]) => this.list.next(tasks))
   }
 
+  // Selection
+
   select(task: Task | null): Task | null {
     if (this.onEdit.value && this.selected.value) {
       return null
@@ -44,14 +46,13 @@ export class TasksService {
     this.select(null)
   }
 
-  delete(deleted: Task) {
-    this.list.next([...this.list.value.filter(task => task.id !== deleted.id)])
-    if (deleted.id === this.onEdit.value?.id) {
-      this.onEdit.next(null)
-    }
-    if (deleted.id === this.selected.value?.id) {
-      this.selected.next(null)
-    }
+  // CRUD
+
+  create() {
+    const empty = new Task(Date.now().toString(), '', '', [])
+    this.select(empty)
+    this.onEdit.next(empty)
+    this.createMode = ON
   }
 
   edit(task: Task) {
@@ -71,23 +72,18 @@ export class TasksService {
     }
   }
 
-  create() {
-    const empty = new Task(Date.now().toString(), '', '', [])
-    this.select(empty)
-    this.onEdit.next(empty)
-    this.createMode = ON
+  delete(deleted: Task) {
+    this.list.next([...this.list.value.filter(task => task.id !== deleted.id)])
+    if (deleted.id === this.onEdit.value?.id) {
+      this.onEdit.next(null)
+    }
+    if (deleted.id === this.selected.value?.id) {
+      this.selected.next(null)
+    }
   }
 
   cancel() {
     this.onEdit.next(null)
     this.deselect()
-  }
-
-  createTask(task: ITask) {
-    const {length} = this.list.value
-    this.list
-      .pipe(
-        map((tasks: Task[]) => [...tasks, new Task(`${length}`, task.title, task.text, task.tags)])
-      )
   }
 }
