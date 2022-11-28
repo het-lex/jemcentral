@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { CommentsComponent } from './solution/component/comments/comments.component'
 
 const routes: Routes = [
   {
@@ -10,6 +11,9 @@ const routes: Routes = [
   {
     path: 'tasks',
     loadChildren: () => import('./solution/tasks.module').then(m => m.TasksModule)
+  }, {
+    path: '**',
+    component: CommentsComponent
   }
 ]
 

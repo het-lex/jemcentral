@@ -46,6 +46,7 @@
     &__tags {
       margin-left: 42px;
       display: inline-flex;
+      flex-wrap: wrap;
       gap: 8px;
     }
 
@@ -149,8 +150,4 @@ button {
   cursor: pointer;
 
   user-select: none;
-
-  &:hover {
-    background: var(--hover-create);
-  }
 }

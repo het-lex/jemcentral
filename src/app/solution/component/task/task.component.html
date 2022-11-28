@@ -15,9 +15,7 @@
       <h4>
         Description
       </h4>
-      <div class="task-text">
-<!--        {{task.text | safe:'html'}}-->
-      </div>
+      <div class="task-text" [innerHTML]="task.text | safe:'html'"></div>
     </div>
 
     <div class="comments">
